@@ -16,14 +16,10 @@ function App(){
 
   return(
     <div>
-      {(typeof backendData.users === 'undefined') ?(
-        <p>Loading...</p>
-      ): (
-        backendData.users.map((user, i) => (
-          <p key={i}>{user}</p>
-        ))
-      )}
-
+      {backendData.map(student, i => (
+        <p key={i}>{JSON.stringify(student)}</p>
+      ))
+      }
     </div>
   )
 }
