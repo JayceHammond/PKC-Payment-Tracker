@@ -15,7 +15,12 @@ app.get("/api", (req, res) => {
     async function run(){
         try{
             let results = await students.find({}).limit(50).toArray();
-            res.json({"students": results});
+            let documents = new Array;
+            results.forEach(element => {
+               documents.push(JSON.stringify(element.FirstName + " " + element.LastName));
+            });
+
+            res.json({"students": documents});
         }finally {
             await client.close();
             console.log("No students found");
