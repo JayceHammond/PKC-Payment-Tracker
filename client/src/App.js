@@ -1,4 +1,5 @@
 import React, {useEffect, useState} from 'react'
+import './App.css'
 
 function App(){
 
@@ -20,7 +21,7 @@ function App(){
         <p>Loading...</p>
       ) : (
         backendData.students.map((student, i) => (
-          <p key={i}>{student}</p>
+          <p key={i} className="student">{student}</p>
         ))
       )}
       

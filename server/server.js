@@ -17,7 +17,13 @@ app.get("/api", (req, res) => {
             let results = await students.find({}).limit(50).toArray();
             let documents = new Array;
             results.forEach(element => {
-               documents.push(JSON.stringify(element.FirstName + " " + element.LastName));
+                let lastName;
+                if(element.LastName === undefined){
+                    lastName = "";
+                }else{
+                    lastName = element.LastName;
+                }
+               documents.push(JSON.stringify(element.FirstName + " " + lastName));
             });
 
             res.json({"students": documents});
