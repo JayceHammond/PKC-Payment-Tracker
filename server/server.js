@@ -29,10 +29,26 @@ app.get("/api", (req, res) => {
             res.json({"students": documents});
         }finally {
             await client.close();
-            console.log("No students found");
         }
     }
     run().catch(console.dir);
     //res.json({"users": ["userOne", "userTwo", "userThree", "userFour"]})
 })
 
+app.get("/api/student/:name", (req, res) =>{
+    const client = new MongoClient(uri);
+    const database = client.db("PKCPaymentTracker");
+    const students = database.collection("Students");
+    async function run(){
+        try{
+            const firstNameQuery = req.params.FirstName;
+            const lastNameQuery = req.params.LastName;
+            let result = await students.findOne({firstNameQuery});
+            
+            res.json({result});
+        }finally{
+            await client.close();
+        }
+    }
+    run().catch(console.dir);
+})

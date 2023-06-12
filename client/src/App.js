@@ -16,7 +16,8 @@ function App(){
   }, [])
 
   return(
-    <div>
+    <div className="student">
+      {/*
       {(typeof backendData.students === 'undefined') ? (
         <p>Loading...</p>
       ) : (
@@ -24,7 +25,9 @@ function App(){
           <p key={i} className="student">{student}</p>
         ))
       )}
-      
+        */}
+
+        <p> {JSON.stringify(backendData)} </p>
     </div>
   )
 }
